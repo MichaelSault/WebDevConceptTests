@@ -7,7 +7,8 @@
 <body>
 
 <?php
-    echo 'Hello World!';
+    $db_connection = pg_connect("host=localhost dbname=postgres user=postgres password=selenagomez");
+    $result = pg_query($db_connection, "SELECT * FROM Users");
 ?>
 
 </body>
