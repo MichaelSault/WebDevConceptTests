@@ -7,24 +7,24 @@
         $user = $_POST['user'];
         $pass = $_POST['pass'];
 
-        $sqlinsert = "INSERT INTO usertable (username, password) VALUES ('$user', '$pass')";
+        $sqlquery = "SELECT id FROM usertable WHERE username = $user AND password = $pass";
 
         if (!pg_query($db_connection, $sqlinsert)) {
             die('error creating new user');
         }
-        $newrecord = "1 record added to database";
+        $newrecord = "login successful";
     }
 ?>
 
 <html>
 <head>
-    <title>PHP Sign Up</title>
+    <title>PHP Login</title>
 </head>
 
 <body>
 
 
-<h1> Create A User: </h1>
+<h1> Login: </h1>
 
 <form method = "post" action = "index.php">
 <input type = "hidden" name = "submitted" value = "true"/>
