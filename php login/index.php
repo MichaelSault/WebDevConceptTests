@@ -18,7 +18,7 @@
 
 <html>
 <head>
-    <title>PHP Sign Up</title>
+    <title>PHP Login</title>
 </head>
 
 <body>
