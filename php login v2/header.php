@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,16 +22,24 @@
                 </ul>
 
                 <div>
-                    <form action = "includes/login.php" method="post"> <!--use post method for sensitive data, get method is less secure-->
-                        <input type = "text" name = "uid" placeholder = "Username">
-                        <input type = "password" name = "pwd" placeholder = "Password">
-                        <button type = "submit" name = "login-submit"> Login </button>
-                    </form>
-                    <a href = "signup.php">SignUp</a>
-                    <form action = "includes/logout.php" method="post">
-                        <a href = "logout.php">LogOut</a>
-                        <button type = "submit" name = "logout-submit"> Logout </button>
-                    </form>
+                    <?php
+                        if (isset($_SESSION['userID'])) { //changes page content if you are logged in
+                            echo '<form action = "includes/logout.php" method="post">
+                            <button type = "submit" name = "logout-submit"> Logout </button>
+                            </form>';  
+                        }   
+
+                        else {
+                            echo '<form action = "includes/login.php" method="post"> <!--use post method for sensitive data, get method is less secure-->
+                                <input type = "text" name = "uid" placeholder = "Username">
+                                <input type = "password" name = "pwd" placeholder = "Password">
+                                <button type = "submit" name = "login-submit"> Login </button>
+                            </form>
+                            <a href = "signup.php">SignUp</a>';
+                    } 
+                    ?>
+                    
+                    
                 </div>
             </nav>
         </header>

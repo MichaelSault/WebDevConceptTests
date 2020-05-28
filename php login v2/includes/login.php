@@ -2,11 +2,11 @@
 
     if (isset($_POST['login-submit'])) {
         require 'dbh.php';
-        $userORemail = $_POST['uid'];
+        $user = $_POST['uid'];
         $password = $_POST['pwd'];
 
         if (empty($userORemail)|| empty($password)) {
-            header("Location: ../signup.php?error=emptyfields");
+            header("Location: ../index.php?error=emptyfields");
             exit(); //stops the script if an error 
         }
         else {
@@ -14,11 +14,32 @@
             $stmt = mysqli_stmt_init($conn);
 
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("Location: ../signup.php?error=sqlerror");
+                header("Location: ../index.php?error=sqlerror");
                 exit();
             }
             else {
-                exit(); //will do something later, ran out of time for tonight...
+                mysqli_stmt_bind_param($stmt, "s", $user);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    $passCheck = password_verify($password, $row['passUsers']);
+                    if ($passCheck == false) {
+                        header("Location: ../index.php?error=wrongpassword");
+                        exit();
+                    } 
+                    else if ($passCheck == true) {
+                        session_start();
+                        $_SESSION['userID'] = $row['idUsers'];
+                        $_SESSION['userName'] = $row['unameUsers'];
+
+                        header("Location: ../signup.php?login=success");
+                    }
+                }
+                else {
+                    header("Location: ../index.php?error=usernotfound");
+                    exit();
+                }
             }
         }
 

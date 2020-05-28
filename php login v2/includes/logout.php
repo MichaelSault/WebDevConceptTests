@@ -1,14 +1,9 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>PHP Login</title>
-</head>
-
-<body>
-
 <?php
-    echo 'Hello World!';
-?>
 
-</body>
-</html>
+    session_start();
+    session_unset();
+    session_destroy();
+
+    header("Location: ../index.php");
+
+?>
