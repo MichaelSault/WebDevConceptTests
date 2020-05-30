@@ -40,6 +40,9 @@
         <input type= "password" name = "pass2" placeholder = "Confirm Password">
         <button type = "submit" name = "signup-submit"> Sign Up </button>
     </form>
+
+
+    <a href = "resetpass.php">Forgot your password?</a>
 </main>
 
 
