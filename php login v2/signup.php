@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>PHP SignUp</title>
+    <title>Sign Up</title>
 </head>
 
 <main>
@@ -41,6 +41,14 @@
         <button type = "submit" name = "signup-submit"> Sign Up </button>
     </form>
 
+
+    <?php
+        if(isset($_GET["newpass"])) {
+            if ($_GET["newpass"] == "passwordupdated") {
+                echo '<p>Your password has been updated!<p>';
+            }
+        }
+    ?>
 
     <a href = "resetpass.php">Forgot your password?</a>
 </main>

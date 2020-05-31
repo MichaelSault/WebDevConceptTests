@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>PHP SignUp</title>
+    <title>Reset Password</title>
 </head>
 
 <main>
@@ -15,6 +15,14 @@
         <input type= "text" name = "email" placeholder = "Recovery E-Mail">
         <button type = "submit" name = "request-submit"> Request recovery email </button>
     </form>
+
+    <?php
+    if (isset($_GET["reset"])) {
+        if ($_GET["reset"] == "success") {
+            echo '<p>Check your email!</p>'
+        }
+    }
+    ?>
 
 
     <a href = "resetpass.php">Forgot your password?</a>

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>PHP Login</title>
+    <title>Login</title>
 </head>
 
 <main>
